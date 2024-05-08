@@ -1,4 +1,4 @@
-# Group4: Molecule Database
+# Molecule Database
 
 # Description: 
 
@@ -66,9 +66,7 @@ H
 
 2 8
 
-**Group 4**
-
-**Group members:** 
+**Collaborators:** 
 Hyunsoo Kim, Caelan Wong, Phuong Khanh Tran, Tristen Liu, Jason Calalang
 
 
