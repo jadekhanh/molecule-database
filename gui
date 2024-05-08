@@ -1,0 +1,3 @@
+#!/bin/bash
+
+java -jar gui.jar 54550 --marco
