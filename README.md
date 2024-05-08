@@ -1,6 +1,6 @@
 # Molecule Database
 
-# Description: 
+## Description
 
 A database of molecules that are entered in the format: 
 
@@ -66,11 +66,11 @@ H
 
 2 8
 
-# Collaborators
+## Collaborators
 Hyunsoo Kim, Caelan Wong, Phuong Khanh Tran, Tristen Liu, Jason Calalang
 
 
-# Project Implementation:
+## Project Implementation
 
 We decided to design the back end of the database storage with the main structure of a large HashMap, with an integer key and ArrayList of molecules as the value. Each key belongs to an array list containing all molecules with the same number of atoms. This feature simplifies future heuristics and is easily quantifiable from the input text file. The Molecule class itself contains its name, the number of atoms, the number of edges, and the count of each element. The count of each element is an array of integers where the index represents the atomic number, and the value is the count. For example, a molecule consisting of only 3 carbons and 2 hydrogen atoms would be represented with values 3 at index 6 and 2 at index 1. The rest of the array would be 0. 
 
@@ -79,7 +79,7 @@ The Molecule class would also have an array list of the Atom class. Each atom ha
 Since isomorphic molecules are equivalent to each other, we must test for isomorphism in each molecule. To save time on testing isomorphism for each molecule, we simply do not consider molecules with more or fewer atoms and those with different types of atoms and the number of edges. However, if these heuristics are all equal, we must perform an expensive test to see if the two molecules are isomorphic.
 
 
-# Implemented features
+## Implemented features
 
 
 **Can hold 10,000 molecules**
@@ -268,13 +268,13 @@ Given that our molecule database is organized as a HashMap where the value for e
 Subgraph search was implemented using the same heuristics as `findMolecule()`, where certain qualities of the molecule were used to eliminate any possible matches. If the subgraph contained more atoms or more of each type of element than the target molecule, the target molecule was no longer considered. The number of edges was also a factor. Once these preliminary tests were met, Each atom was tested so that there was at least one candidate in the target molecule. For example, if a carbon atom was connected to two hydrogen atoms with single bonds in the subgraph, then at least one carbon atom must be connected to at least two hydrogen atoms with a single bond. The candidates are stored on a HashMap, with the subgraph’s atom acting as a key and an array list of candidate atoms as the value. After all candidates are found, a linked list traverses through the subgraph, choosing one of the candidates to pair with and adding neighbors similar to Breadth First Search. If no available candidates are left to choose from during traversal, the linked list will traverse backward through its parent, choosing a different candidate as an option. If the linked list attempts to traverse on the head, that means that no subgraph exists in the molecule. If the subgraph is traversed through the entire linked list, however, this means that the subgraph does exist in the target molecule. This process is repeated for every possible molecule in the database.
 
 
-# References
+## References
 [1] “NCI/CADD Chemical Identifier Resolver.” Accessed: Apr. 29, 2024. [Online]. Available: https://cactus.nci.nih.gov/chemical/structure
 
 [2] P. C. Kroon, “pckroon/pysmiles.” Apr. 29, 2024. Accessed: Apr. 29, 2024. [Online]. Available: https://github.com/pckroon/pysmiles
 
 
-# Work Breakdown
+## Work Breakdown
 Hyunsoo Kim implemented the Main.java, the MoleculeDatabase.java, and the `ProteinFactory.java`. In addition, Hyunsoo worked to implement a partitioned database scheme with manual memory management,  Hyunsoo helped discover useful PubChem APIs and put together testing and benchmarking suite, and also contributed to the README.md file. 
 
 Caelan Wong implemented the `mostSimilar()` method in Molecule.java and MoleculeDatabase.java to run whenever `findMolecule()` returns null. Also, Caelan helped with the early implementation of the `addMolecule()` method and created the `PeriodicTable.java` enum. In addition, Caelan implemented the `deleteMolecule()` function in the GUI and command line interface. Lastly, Caelan helped with the README.md.
