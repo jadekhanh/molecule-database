@@ -66,7 +66,7 @@ H
 
 2 8
 
-**Collaborators:** 
+# Collaborators
 Hyunsoo Kim, Caelan Wong, Phuong Khanh Tran, Tristen Liu, Jason Calalang
 
 
