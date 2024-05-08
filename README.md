@@ -259,7 +259,6 @@ Given that our molecule database is organized as a HashMap where the value for e
 
 
 
-
 **Subgraph search (finds all molecules that contain the provided subgraph)**
 
 **Percentage:** 30%
@@ -268,22 +267,12 @@ Given that our molecule database is organized as a HashMap where the value for e
 
 Subgraph search was implemented using the same heuristics as `findMolecule()`, where certain qualities of the molecule were used to eliminate any possible matches. If the subgraph contained more atoms or more of each type of element than the target molecule, the target molecule was no longer considered. The number of edges was also a factor. Once these preliminary tests were met, Each atom was tested so that there was at least one candidate in the target molecule. For example, if a carbon atom was connected to two hydrogen atoms with single bonds in the subgraph, then at least one carbon atom must be connected to at least two hydrogen atoms with a single bond. The candidates are stored on a HashMap, with the subgraph’s atom acting as a key and an array list of candidate atoms as the value. After all candidates are found, a linked list traverses through the subgraph, choosing one of the candidates to pair with and adding neighbors similar to Breadth First Search. If no available candidates are left to choose from during traversal, the linked list will traverse backward through its parent, choosing a different candidate as an option. If the linked list attempts to traverse on the head, that means that no subgraph exists in the molecule. If the subgraph is traversed through the entire linked list, however, this means that the subgraph does exist in the target molecule. This process is repeated for every possible molecule in the database.
 
-# Changes from Initial Project Defense
-
-We decided not to use the VF2++ algorithm or any database-implementing techniques stated in the Initial Project Defense because we found a sufficient way to build our molecule database using simple data structures such as HashMaps, LinkedLists, and ArrayLists. We also use the same data structures to implement search algorithms for finding isomorphic molecules and similar subgraphs.
 
 # References
 [1] “NCI/CADD Chemical Identifier Resolver.” Accessed: Apr. 29, 2024. [Online]. Available: https://cactus.nci.nih.gov/chemical/structure
 
 [2] P. C. Kroon, “pckroon/pysmiles.” Apr. 29, 2024. Accessed: Apr. 29, 2024. [Online]. Available: https://github.com/pckroon/pysmiles
 
-# Code
-
-Link to branch with all complete Java 17 code (master): https://agile.bu.edu/gitlab//ec504/ec504_projects/group4
-
-Link to all data necessary for project to run (drive link or repo link): None
-
-Link to a folder containing all testing code utilized to observe the correctness of your code: None
 
 # Work Breakdown
 Hyunsoo Kim implemented the Main.java, the MoleculeDatabase.java, and the `ProteinFactory.java`. In addition, Hyunsoo worked to implement a partitioned database scheme with manual memory management,  Hyunsoo helped discover useful PubChem APIs and put together testing and benchmarking suite, and also contributed to the README.md file. 
